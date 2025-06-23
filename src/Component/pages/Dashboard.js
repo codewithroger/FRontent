@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,9 @@ const Dashboard = () => {
   const [editValues, setEditValues] = useState({ name: '', quantity: '', price: '', category: '' });
   const [error, setError] = useState(null);
 
-  const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+const authHeaders = useMemo(() => {
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}, [token]);
 
   const fetchProducts = useCallback(async () => {
     if (!token) return;
