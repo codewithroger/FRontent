@@ -20,7 +20,7 @@ const authHeaders = useMemo(() => {
   const fetchProducts = useCallback(async () => {
     if (!token) return;
     try {
-      const res = await axios.get('https://backend-8wge.onrender.com/api/products', { headers: authHeaders });
+      const res = await axios.get('https://backend-tts1.onrender.com/api/products', { headers: authHeaders });
       setProducts(res.data);
     } catch (err) {
       console.error('Fetch products failed:', err.response?.data || err.message);
@@ -53,7 +53,7 @@ const authHeaders = useMemo(() => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/products',
+        'https://backend-tts1.onrender.com/api/products',
         {
           ...newProduct,
           quantity: Number(newProduct.quantity),
@@ -72,7 +72,7 @@ const authHeaders = useMemo(() => {
   const handleDelete = async (id) => {
     setError(null);
     try {
-      await axios.delete(`https://backend-8wge.onrender.com/api/products/${id}`, { headers: authHeaders });
+      await axios.delete(`https://backend-tts1.onrender.com/api/products/${id}`, { headers: authHeaders });
       fetchProducts();
     } catch (err) {
       console.error('Delete product failed:', err.response?.data || err.message);
