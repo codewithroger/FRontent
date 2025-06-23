@@ -18,7 +18,7 @@ const Dashboard = () => {
   const fetchProducts = useCallback(async () => {
     if (!token) return;
     try {
-      const res = await axios.get('http://localhost:5000/api/products', { headers: authHeaders });
+      const res = await axios.get('https://backend-8wge.onrender.com/api/products', { headers: authHeaders });
       setProducts(res.data);
     } catch (err) {
       console.error('Fetch products failed:', err.response?.data || err.message);
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     setError(null);
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, { headers: authHeaders });
+      await axios.delete(`https://backend-8wge.onrender.com/api/products/${id}`, { headers: authHeaders });
       fetchProducts();
     } catch (err) {
       console.error('Delete product failed:', err.response?.data || err.message);
@@ -88,7 +88,7 @@ const Dashboard = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/products/${editingProduct._id}`,
+        `https://backend-8wge.onrender.com/api/products/${editingProduct._id}`,
         {
           ...editValues,
           quantity: Number(editValues.quantity),
