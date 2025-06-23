@@ -14,7 +14,7 @@ const RegisterPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/register', { email, password });
+      const { data } = await axios.post('https://backend-8wge.onrender.com/api/auth/register', { email, password });
       login(data.token);
       navigate('/dashboard');
     } catch (err) {
