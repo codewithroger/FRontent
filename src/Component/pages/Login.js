@@ -16,7 +16,7 @@ const LoginPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('https://backend-8wge.onrender.com/api/auth/login', { email, password });
+      const { data } = await axios.post('https://backend-tts1.onrender.com/api/auth/login', { email, password });
       login(data.token);
       navigate('/dashboard');
     } catch (err) {
@@ -32,7 +32,7 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const idToken = await result.user.getIdToken();
-      const { data } = await axios.post('https://backend-8wge.onrender.com/api/auth/google-login', { idToken });
+      const { data } = await axios.post('https://backend-tts1.onrender.com/api/auth/google-login', { idToken });
       login(data.token);
       navigate('/dashboard');
     } catch (err) {
